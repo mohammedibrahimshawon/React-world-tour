@@ -10,13 +10,16 @@ const Countries = () => {
     useEffect(()=>{
         fetch('https://restcountries.com/v3.1/all')
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => setCountries(data));
     },[])
 
 
     return (
         <div>
-            <h1>Countries</h1>
+            <h1>Countries:{countries.length}</h1>
+            {
+                countries.map(country =><Country country={country}></Country>)
+            }
         </div>
     );
 };
